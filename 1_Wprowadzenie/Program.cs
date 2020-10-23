@@ -13,8 +13,21 @@ namespace _1_Wprowadzenie
         {
             var path = @"d:\";
             ShowLargeFilesWithoutLinq(path);
+            Console.WriteLine("\n**************************************************************************************************\n");
+            ShowLargeFilesLinq(path);
+
 
             Console.ReadKey();
+        }
+
+        private static void ShowLargeFilesLinq(string path)
+        {
+            var question = from file in new DirectoryInfo(path).GetFiles() orderby file.Length descending select file;
+
+            foreach (var file in question.Take(5))
+            {
+                Console.WriteLine($"{file.Name,-70} : {file.Length,20:N0}");
+            }
         }
 
         private static void ShowLargeFilesWithoutLinq(string path)
