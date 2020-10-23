@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 //using System.Linq;
 using System.Text;
@@ -26,20 +27,22 @@ namespace _2_Funkcje_Csharp_dla_LINQ
                 new Employee{Id = 7, FirstName = "Danuta", LastName = "Karoń"},
             };
 
-            Console.WriteLine(MyLinq.Count(drivers));
-            Console.WriteLine(programmers.Count());
-
-            IEnumerator<Employee> enumerator = drivers.GetEnumerator();
-
-            while (enumerator.MoveNext())
+            foreach (var person in programmers.Where(e => e.FirstName.StartsWith("K")))
             {
-                Console.WriteLine(enumerator.Current.FirstName);
+                Console.WriteLine(person.FirstName);
             }
-
+            //---------------------Dodatkowe---------------------------------------------------
+            foreach (var person in programmers.Where(e=>e.LastName.StartsWith("K")))
+            {
+                Console.WriteLine($"{person.LastName} {person.FirstName} nr ID: {person.Id}.");
+            }
+            //---------------------------------------------------------------------------------
             Console.ReadKey();
         }
 
-
-
+        private static bool StartsLetter(Employee employee)
+        {
+            return employee.FirstName.StartsWith("K");
+        }
     }
 }
