@@ -15,9 +15,19 @@ namespace _1_Wprowadzenie
             ShowLargeFilesWithoutLinq(path);
             Console.WriteLine("\n**************************************************************************************************\n");
             ShowLargeFilesLinq(path);
-
+            Console.WriteLine("\n**************************************************************************************************\n");
+            ShowLargeFilesLinq2(path);
 
             Console.ReadKey();
+        }
+
+        private static void ShowLargeFilesLinq2(string path)
+        {
+            var question = new DirectoryInfo(path).GetFiles().OrderByDescending(p => p.Length).Take(5);
+            foreach (var file in question.Take(5))
+            {
+                Console.WriteLine($"{file.Name,-70} : {file.Length,20:N0}");
+            }
         }
 
         private static void ShowLargeFilesLinq(string path)
