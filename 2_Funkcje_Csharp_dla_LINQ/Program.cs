@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 //using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,9 @@ namespace _2_Funkcje_Csharp_dla_LINQ
                 new Employee{Id = 7, FirstName = "Danuta", LastName = "Karoń"},
             };
 
+            Console.WriteLine(MyLinq.Count(drivers));
+            Console.WriteLine(programmers.Count());
+
             IEnumerator<Employee> enumerator = drivers.GetEnumerator();
 
             while (enumerator.MoveNext())
@@ -34,5 +38,8 @@ namespace _2_Funkcje_Csharp_dla_LINQ
 
             Console.ReadKey();
         }
+
+
+
     }
 }
