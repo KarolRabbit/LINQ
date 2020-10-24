@@ -13,8 +13,8 @@ namespace _2_Funkcje_Csharp_dla_LINQ
         static void Main(string[] args)
         {
             //-------FUNC i ACTION-----------------------------------------------
-            double x = 5.5;
-            Func<double, double> square = (d => d * d);
+            int x = 5;
+            Func<int, int> square = (d => d * d);
             Console.WriteLine($"Kwadrat z {x} jest równy {square(x)}");
             double y = 25;
             Func<double, double> squareRoot = (d => Math.Sqrt(d));
@@ -23,8 +23,8 @@ namespace _2_Funkcje_Csharp_dla_LINQ
             Action<string> sayHello = (n => Console.WriteLine($"Osoba którą witamy to {n}"));
             sayHello(yourName);
             Console.WriteLine("-------------------------------------------------------------------");
-    //-------------------------------------------------------------------
-
+            //-------------------------------------------------------------------
+            
             IEnumerable<Employee> programmers = new Employee[]
             {
                 new Employee{Id = 1, FirstName = "Karol", LastName = "Królik"},

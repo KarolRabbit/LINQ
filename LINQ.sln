@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_Wprowadzenie", "1_Wprowad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2_Funkcje_Csharp_dla_LINQ", "2_Funkcje_Csharp_dla_LINQ\2_Funkcje_Csharp_dla_LINQ.csproj", "{C1EB5528-B38F-4A35-8D94-118F21EDCFFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_Podstawowe_zapytania", "3_Podstawowe_zapytania\3_Podstawowe_zapytania.csproj", "{8FAACBA8-A80A-4475-8816-B20CF5475BBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C1EB5528-B38F-4A35-8D94-118F21EDCFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1EB5528-B38F-4A35-8D94-118F21EDCFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1EB5528-B38F-4A35-8D94-118F21EDCFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FAACBA8-A80A-4475-8816-B20CF5475BBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FAACBA8-A80A-4475-8816-B20CF5475BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FAACBA8-A80A-4475-8816-B20CF5475BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FAACBA8-A80A-4475-8816-B20CF5475BBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
