@@ -17,7 +17,7 @@ namespace Filtrowanie_sortowanie_wyswietlanie
         public int BurningOnHighway { get; set; }
         public int BurningInGeneral { get; set; }
 
-        internal static Car TransformCSV(string line)
+        public static Car TransformCSV(string line)
         {
             var carProperties = line.Split(',');
             carProperties[3] = carProperties[3].Replace('.', ',');

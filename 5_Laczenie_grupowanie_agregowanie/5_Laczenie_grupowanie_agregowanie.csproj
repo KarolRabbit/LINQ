@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6E222F57-C87D-47A1-B547-659FEBFABDD5}</ProjectGuid>
+    <ProjectGuid>{D6D38977-67BD-4A92-B3C2-6A7A95CD4E77}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Filtrowanie_sortowanie_wyswietlanie</RootNamespace>
-    <AssemblyName>Filtrowanie_sortowanie_wyswietlanie</AssemblyName>
+    <RootNamespace>_5_Laczenie_grupowanie_agregowanie</RootNamespace>
+    <AssemblyName>5_Laczenie_grupowanie_agregowanie</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,18 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Car.cs" />
+    <Compile Include="Manufacturer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="paliwo.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="producent.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Filtrowanie_sortowanie_wyswietlanie\4_Filtrowanie_sortowanie_wyswietlanie.csproj">
+      <Project>{6e222f57-c87d-47a1-b547-659febfabdd5}</Project>
+      <Name>4_Filtrowanie_sortowanie_wyswietlanie</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
