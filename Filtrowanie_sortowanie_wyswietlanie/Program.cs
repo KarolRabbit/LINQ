@@ -12,9 +12,13 @@ namespace Filtrowanie_sortowanie_wyswietlanie
         static void Main(string[] args)
         {
             var cars = ReadFiles("paliwo.csv");
-            var cars2 = ReadFilesQuestion("paliwo.csv");
 
-            foreach (var car in cars2)
+            var question = cars.OrderByDescending(c => c.BurningInGeneral).ThenBy(c => c.Manufacturer).ThenBy(c=>c.Model).Take(15);
+            var question2 = from car in cars
+                            orderby car.BurningInGeneral descending, car.Manufacturer, car.Model
+                            select car;
+   
+            foreach (var car in question2.Take(10))
             {
                 Console.WriteLine("{0,-55} {1,-10}", $"{car.Manufacturer} {car.Model}", car.BurningInGeneral);
                 Console.WriteLine("----------------------------------------------------------");
