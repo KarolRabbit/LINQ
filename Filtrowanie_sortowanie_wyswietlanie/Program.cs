@@ -17,12 +17,24 @@ namespace Filtrowanie_sortowanie_wyswietlanie
             var question2 = from car in cars
                             orderby car.BurningInGeneral descending, car.Manufacturer, car.Model
                             select car;
+
+            var question3 = cars.Where(c => c.Manufacturer == "BMW")
+                                            .OrderByDescending(c => c.BurningInGeneral)
+                                            .ThenBy(c => c.Model)
+                                            .Select(c => c).First();
+
+            var question4 = (from car in cars
+                            where car.Manufacturer == "Audi"
+                            orderby car.BurningInGeneral descending, car.Manufacturer, car.Model
+                            select car).First();
    
-            foreach (var car in question2.Take(10))
+            foreach (var car in question.Take(10))
             {
                 Console.WriteLine("{0,-55} {1,-10}", $"{car.Manufacturer} {car.Model}", car.BurningInGeneral);
                 Console.WriteLine("----------------------------------------------------------");
             }
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine($"{question4.Manufacturer} {question4.Model} {question4.BurningInGeneral}");
             Console.ReadKey();    
         }
 
