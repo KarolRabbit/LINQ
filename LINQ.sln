@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2_Funkcje_Csharp_dla_LINQ",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_Podstawowe_zapytania", "3_Podstawowe_zapytania\3_Podstawowe_zapytania.csproj", "{8FAACBA8-A80A-4475-8816-B20CF5475BBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4_Filtrowanie_sortowanie_wyswietlanie", "Filtrowanie_sortowanie_wyswietlanie\4_Filtrowanie_sortowanie_wyswietlanie.csproj", "{6E222F57-C87D-47A1-B547-659FEBFABDD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8FAACBA8-A80A-4475-8816-B20CF5475BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FAACBA8-A80A-4475-8816-B20CF5475BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FAACBA8-A80A-4475-8816-B20CF5475BBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E222F57-C87D-47A1-B547-659FEBFABDD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E222F57-C87D-47A1-B547-659FEBFABDD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E222F57-C87D-47A1-B547-659FEBFABDD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E222F57-C87D-47A1-B547-659FEBFABDD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
