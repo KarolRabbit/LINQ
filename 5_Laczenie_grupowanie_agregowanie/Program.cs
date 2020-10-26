@@ -15,37 +15,41 @@ namespace _5_Laczenie_grupowanie_agregowanie
             var cars = ReadFiles("paliwo.csv");
             var manufacturers = ReadManufacturers("producent.csv");
 
-            var question = from car in cars
-                           join manufacturer in manufacturers on car.Manufacturer equals manufacturer.Name
-                           orderby car.BurningInGeneral descending
-                           select new
-                           {
-                               manufacturer.Headquarters,
-                               car.BurningInGeneral,
-                               car.Model,
-                               car.Manufacturer
-                           };
+            var question2 = cars.GroupBy(c => c.Manufacturer)
+                                .OrderBy(g => g.Key)
+                                .Select(g => g);
 
-            var question2 = cars.Join(manufacturers,
-                                      c => c.Manufacturer,
-                                      m => m.Name,
-                                      (c, m) => new
-                                      {
-                                          Car = c,
-                                          Manufacturer =m
-                                      })
-                                .OrderByDescending(c => c.Car.BurningInGeneral)
-                                .ThenBy(c => c.Car.Manufacturer)
-                                .ThenBy(c => c.Car.Model);
-
-            foreach (var item in question2.Take(15))
+            foreach (var group in question2)
             {
-                Console.WriteLine("{0,-15} {1,-55} {2,-10}", 
-                                  item.Manufacturer.Headquarters, 
-                                  $"{item.Car.Manufacturer} {item.Car.Model}", 
-                                  item.Car.BurningInGeneral);
-                Console.WriteLine("----------------------------------------------------------------");
+                Console.WriteLine("--------------------------------------------------------");
+                Console.WriteLine($"{group.Key}");
+                Console.WriteLine("- - - - - - - - - - - - - - -  - - - - - - - - - - - - - ");
+                foreach (var car in group.OrderByDescending(c => c.BurningInGeneral).Take(4))
+                {
+                    Console.WriteLine($"\t--> {car.Model,-40} {car.BurningInGeneral,-10}");
+                }
+                Console.WriteLine("--------------------------------------------------------");
+                Console.WriteLine();
             }
+
+            //SKŁADNIA ZAPYTANIA
+            //var question = from car in cars
+            //               group car by car.Manufacturer.ToUpper() into manufacturer
+            //               orderby manufacturer.Key
+            //               select manufacturer;
+
+            //foreach (var group in question)
+            //{
+            //    Console.WriteLine("--------------------------------------------------------");
+            //    Console.WriteLine($"{group.Key}");
+            //    Console.WriteLine("- - - - - - - - - - - - - - -  - - - - - - - - - - - - - ");
+            //    foreach (var car in group.OrderByDescending(c => c.BurningInGeneral).Take(4))
+            //    {
+            //        Console.WriteLine($"\t--> {car.Model,-40} {car.BurningInGeneral,-10}");
+            //    }
+            //    Console.WriteLine("--------------------------------------------------------");
+            //    Console.WriteLine();
+            //}
 
             Console.ReadKey();
         }
