@@ -26,9 +26,24 @@ namespace _5_Laczenie_grupowanie_agregowanie
                                car.Manufacturer
                            };
 
-            foreach (var item in question.Take(15))
+            var question2 = cars.Join(manufacturers,
+                                      c => c.Manufacturer,
+                                      m => m.Name,
+                                      (c, m) => new
+                                      {
+                                          Car = c,
+                                          Manufacturer =m
+                                      })
+                                .OrderByDescending(c => c.Car.BurningInGeneral)
+                                .ThenBy(c => c.Car.Manufacturer)
+                                .ThenBy(c => c.Car.Model);
+
+            foreach (var item in question2.Take(15))
             {
-                Console.WriteLine("{0,-15} {1,-55} {2,-10}", item.Headquarters, $"{item.Manufacturer} {item.Model}",  item.BurningInGeneral);
+                Console.WriteLine("{0,-15} {1,-55} {2,-10}", 
+                                  item.Manufacturer.Headquarters, 
+                                  $"{item.Car.Manufacturer} {item.Car.Model}", 
+                                  item.Car.BurningInGeneral);
                 Console.WriteLine("----------------------------------------------------------------");
             }
 
