@@ -15,22 +15,65 @@ namespace _5_Laczenie_grupowanie_agregowanie
             var cars = ReadFiles("paliwo.csv");
             var manufacturers = ReadManufacturers("producent.csv");
 
-            var question2 = cars.GroupBy(c => c.Manufacturer)
-                                .OrderBy(g => g.Key)
-                                .Select(g => g);
+            var question5 = manufacturers.GroupJoin(cars, m => m.Name, c => c.Manufacturer,
+                                                         (m, g) =>
+                                                                  new
+                                                                  {
+                                                                      Manufacturer = m,
+                                                                      Cars = g
+                                                                  }).OrderBy(m => m.Manufacturer.Name);
 
-            foreach (var group in question2)
+            foreach (var carsGroup in question5)
             {
                 Console.WriteLine("--------------------------------------------------------");
-                Console.WriteLine($"{group.Key}");
-                Console.WriteLine("- - - - - - - - - - - - - - -  - - - - - - - - - - - - - ");
-                foreach (var car in group.OrderByDescending(c => c.BurningInGeneral).Take(4))
+                Console.WriteLine($"{carsGroup.Manufacturer.Name} from {carsGroup.Manufacturer.Headquarters}");
+                foreach (var car in carsGroup.Cars.OrderByDescending(c => c.BurningInGeneral).Take(3))
                 {
-                    Console.WriteLine($"\t--> {car.Model,-40} {car.BurningInGeneral,-10}");
+                    Console.WriteLine($"\t{car.Model,-35} {car.BurningInGeneral,-15}");
                 }
                 Console.WriteLine("--------------------------------------------------------");
-                Console.WriteLine();
+                Console.WriteLine("\n");
             }
+
+            //var question4 = from manufacturer in manufacturers
+            //                join car in cars on manufacturer.Name equals car.Manufacturer into groupCars
+            //                orderby manufacturer.Name
+            //                select new
+            //                {
+            //                    Cars = groupCars,
+            //                    Manufacturer = manufacturer
+            //                };
+
+            //foreach (var carsGroup in question4)
+            //{
+            //    Console.WriteLine("--------------------------------------------------------");
+            //    Console.WriteLine($"{carsGroup.Manufacturer.Name} from {carsGroup.Manufacturer.Headquarters}");
+            //    foreach (var car in carsGroup.Cars.OrderByDescending(c => c.BurningInGeneral).Take(3))
+            //    {
+            //        Console.WriteLine($"\t{car.Model,-35} {car.BurningInGeneral,-15}");
+            //    }
+            //    Console.WriteLine("--------------------------------------------------------");
+            //    Console.WriteLine("\n");
+            //}
+
+
+
+            //var question2 = cars.GroupBy(c => c.Manufacturer)
+            //                    .OrderBy(g => g.Key)
+            //                    .Select(g => g);
+
+            //foreach (var group in question2)
+            //{
+            //    Console.WriteLine("--------------------------------------------------------");
+            //    Console.WriteLine($"{group.Key}");
+            //    Console.WriteLine("- - - - - - - - - - - - - - -  - - - - - - - - - - - - - ");
+            //    foreach (var car in group.OrderByDescending(c => c.BurningInGeneral).Take(4))
+            //    {
+            //        Console.WriteLine($"\t--> {car.Model,-40} {car.BurningInGeneral,-10}");
+            //    }
+            //    Console.WriteLine("--------------------------------------------------------");
+            //    Console.WriteLine();
+            //}
 
             //SKŁADNIA ZAPYTANIA
             //var question = from car in cars
