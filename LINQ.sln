@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4_Filtrowanie_sortowanie_wy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5_Laczenie_grupowanie_agregowanie", "5_Laczenie_grupowanie_agregowanie\5_Laczenie_grupowanie_agregowanie.csproj", "{D6D38977-67BD-4A92-B3C2-6A7A95CD4E77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6_LINQ _do_XML", "6_LINQ _do_XML\6_LINQ _do_XML.csproj", "{BEF6CFED-A742-44C3-9B49-B2FB609D3F98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D6D38977-67BD-4A92-B3C2-6A7A95CD4E77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6D38977-67BD-4A92-B3C2-6A7A95CD4E77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6D38977-67BD-4A92-B3C2-6A7A95CD4E77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEF6CFED-A742-44C3-9B49-B2FB609D3F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEF6CFED-A742-44C3-9B49-B2FB609D3F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEF6CFED-A742-44C3-9B49-B2FB609D3F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEF6CFED-A742-44C3-9B49-B2FB609D3F98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
