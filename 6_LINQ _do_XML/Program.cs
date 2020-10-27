@@ -18,24 +18,31 @@ namespace _6_LINQ__do_XML
             //var manufacturers = ReadManufacturers("producent.csv");
 
             var document = new XDocument();
-            var carsXML = new XElement("Cars");
-
-            foreach (var car in cars)
-            {
-                var carProperty = new XElement("CarProperty");
-                var model = new XElement("Model", car.Model);
-                var manufacturer = new XElement("Manufacturer", car.Manufacturer);
-                var burningInGeneral = new XElement("BurningInGeneral", car.BurningInGeneral);
-
-                carProperty.Add(manufacturer);
-                carProperty.Add(model);
-                carProperty.Add(burningInGeneral);
-
-                carsXML.Add(carProperty);
-            }
-
+            var carsXML = new XElement("Cars", from car in cars
+                                               select  new XElement("Cars",              
+                                                                 new XAttribute("Model", car.Model),
+                                                                 new XAttribute("Manufacturer", car.Manufacturer),
+                                                                 new XAttribute("Capacity", car.Capacity),
+                                                                 new XAttribute("BurningInGeneral", car.BurningInGeneral),
+                                                                 new XAttribute("BurningOnHighway", car.BurningOnHighway),
+                                                                 new XAttribute("BurningInCity", car.BurningInCity)));
             document.Add(carsXML);
             document.Save("paliwo.xml");
+
+            //foreach (var car in cars)
+            //{
+            //    var carProperty = new XElement("CarProperty",
+            //                                         new XAttribute("Model", car.Model),
+            //                                         new XAttribute("Manufacturer", car.Manufacturer),
+            //                                         new XAttribute("BurningInGeneral", car.BurningInGeneral),
+            //                                         new XAttribute("BurningInCity", car.BurningInCity ));
+
+
+            //    carsXML.Add(carProperty);
+            //}
+
+            //document.Add(carsXML);
+            //document.Save("paliwo.xml");
             Console.ReadKey();
         }
         private static List<Manufacturer> ReadManufacturers(string path)
