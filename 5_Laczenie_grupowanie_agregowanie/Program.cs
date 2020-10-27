@@ -16,29 +16,59 @@ namespace _5_Laczenie_grupowanie_agregowanie
             var manufacturers = ReadManufacturers("producent.csv");
 
 
-            var question6 = from manufacturer in manufacturers
-                            join car in cars on manufacturer.Name equals car.Manufacturer into groupCars
-                            orderby manufacturer.Headquarters
+            var question7 = from car in cars
+                            group car by car.Manufacturer.ToUpper() into groupCars
                             select new
                             {
-                                Manufacturer = manufacturer,
-                                Cars = groupCars
+                                Name = groupCars.Key,
+                                Max = groupCars.Max(c => c.BurningInGeneral),
+                                Min = groupCars.Min(c => c.BurningInGeneral),
+                                Ave = groupCars.Average(c => c.BurningInGeneral)
                             } into result
-                            group result by result.Manufacturer.Headquarters;
-                            
-                            
+                            orderby result.Ave descending
+                            select result;
 
-            foreach (var country in question6)
+            var question8 = cars.GroupBy(c => c.Manufacturer)
+                                .Select(g => new
+                                {
+                                    Name = g.Key,
+                                    Max = g.Max(c => c.BurningInGeneral),
+                                    Min = g.Min(c => c.BurningInGeneral),
+                                    Ave = g.Average(c => c.BurningInGeneral)
+                                }).OrderByDescending(g => g.Ave);
+
+            foreach (var manufacturer in question8)
             {
-                Console.WriteLine("--------------------------------------------------------");
-                Console.WriteLine($"{country.Key}");
-
-                foreach (var car in country.SelectMany(g => g.Cars).OrderByDescending(c=>c.BurningInGeneral).Take(3))
-                {
-                    Console.WriteLine("{0,-55} {1,-10}", $"{car.Manufacturer} {car.Model}", car.BurningInGeneral);
-                }
-                Console.WriteLine("--------------------------------------------------------\n");
+                Console.WriteLine(manufacturer.Name);
+                Console.WriteLine("\t{0,-10} {1,-7:F3} ", "Average: ", manufacturer.Ave);
+                Console.WriteLine("\t{0,-10} {1,-7} ", "Max: ", manufacturer.Max);
+                Console.WriteLine("\t{0,-10} {1,-7} ", "Min: ", manufacturer.Min);
+                Console.WriteLine();
             }
+
+
+
+            //var question6 = from manufacturer in manufacturers
+            //                join car in cars on manufacturer.Name equals car.Manufacturer into groupCars
+            //                orderby manufacturer.Headquarters
+            //                select new
+            //                {
+            //                    Manufacturer = manufacturer,
+            //                    Cars = groupCars
+            //                } into result
+            //                group result by result.Manufacturer.Headquarters;
+
+            //foreach (var country in question6)
+            //{
+            //    Console.WriteLine("--------------------------------------------------------");
+            //    Console.WriteLine($"{country.Key}");
+
+            //    foreach (var car in country.SelectMany(g => g.Cars).OrderByDescending(c=>c.BurningInGeneral).Take(3))
+            //    {
+            //        Console.WriteLine("{0,-55} {1,-10}", $"{car.Manufacturer} {car.Model}", car.BurningInGeneral);
+            //    }
+            //    Console.WriteLine("--------------------------------------------------------\n");
+            //}
 
 
 
