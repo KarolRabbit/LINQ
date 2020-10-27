@@ -15,25 +15,52 @@ namespace _5_Laczenie_grupowanie_agregowanie
             var cars = ReadFiles("paliwo.csv");
             var manufacturers = ReadManufacturers("producent.csv");
 
-            var question5 = manufacturers.GroupJoin(cars, m => m.Name, c => c.Manufacturer,
-                                                         (m, g) =>
-                                                                  new
-                                                                  {
-                                                                      Manufacturer = m,
-                                                                      Cars = g
-                                                                  }).OrderBy(m => m.Manufacturer.Name);
 
-            foreach (var carsGroup in question5)
+            var question6 = from manufacturer in manufacturers
+                            join car in cars on manufacturer.Name equals car.Manufacturer into groupCars
+                            orderby manufacturer.Headquarters
+                            select new
+                            {
+                                Manufacturer = manufacturer,
+                                Cars = groupCars
+                            } into result
+                            group result by result.Manufacturer.Headquarters;
+                            
+                            
+
+            foreach (var country in question6)
             {
                 Console.WriteLine("--------------------------------------------------------");
-                Console.WriteLine($"{carsGroup.Manufacturer.Name} from {carsGroup.Manufacturer.Headquarters}");
-                foreach (var car in carsGroup.Cars.OrderByDescending(c => c.BurningInGeneral).Take(3))
+                Console.WriteLine($"{country.Key}");
+
+                foreach (var car in country.SelectMany(g => g.Cars).OrderByDescending(c=>c.BurningInGeneral).Take(3))
                 {
-                    Console.WriteLine($"\t{car.Model,-35} {car.BurningInGeneral,-15}");
+                    Console.WriteLine("{0,-55} {1,-10}", $"{car.Manufacturer} {car.Model}", car.BurningInGeneral);
                 }
-                Console.WriteLine("--------------------------------------------------------");
-                Console.WriteLine("\n");
+                Console.WriteLine("--------------------------------------------------------\n");
             }
+
+
+
+            //var question5 = manufacturers.GroupJoin(cars, m => m.Name, c => c.Manufacturer,
+            //                                             (m, g) =>
+            //                                                      new
+            //                                                      {
+            //                                                          Manufacturer = m,
+            //                                                          Cars = g
+            //                                                      }).OrderBy(m => m.Manufacturer.Name);
+
+            //foreach (var carsGroup in question5)
+            //{
+            //    Console.WriteLine("--------------------------------------------------------");
+            //    Console.WriteLine($"{carsGroup.Manufacturer.Name} from {carsGroup.Manufacturer.Headquarters}");
+            //    foreach (var car in carsGroup.Cars.OrderByDescending(c => c.BurningInGeneral).Take(3))
+            //    {
+            //        Console.WriteLine($"\t{car.Model,-35} {car.BurningInGeneral,-15}");
+            //    }
+            //    Console.WriteLine("--------------------------------------------------------");
+            //    Console.WriteLine("\n");
+            //}
 
             //var question4 = from manufacturer in manufacturers
             //                join car in cars on manufacturer.Name equals car.Manufacturer into groupCars
