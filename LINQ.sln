@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5_Laczenie_grupowanie_agreg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6_LINQ _do_XML", "6_LINQ _do_XML\6_LINQ _do_XML.csproj", "{BEF6CFED-A742-44C3-9B49-B2FB609D3F98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7_LINQ_i_Entity_Framework", "LINQ_i_Entity_Framework\7_LINQ_i_Entity_Framework.csproj", "{D883DBBB-E1D4-4E76-8FCD-084635C3A4C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{BEF6CFED-A742-44C3-9B49-B2FB609D3F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEF6CFED-A742-44C3-9B49-B2FB609D3F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEF6CFED-A742-44C3-9B49-B2FB609D3F98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D883DBBB-E1D4-4E76-8FCD-084635C3A4C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D883DBBB-E1D4-4E76-8FCD-084635C3A4C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D883DBBB-E1D4-4E76-8FCD-084635C3A4C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D883DBBB-E1D4-4E76-8FCD-084635C3A4C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

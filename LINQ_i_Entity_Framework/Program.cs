@@ -7,18 +7,49 @@ using _5_Laczenie_grupowanie_agregowanie;
 using System.IO;
 using Filtrowanie_sortowanie_wyswietlanie;
 using System.Xml.Linq;
+using _6_LINQ__do_XML;
+using System.Data.Entity;
 
-namespace _6_LINQ__do_XML
+namespace LINQ_i_Entity_Framework
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //NewXML();
-            AskXML();
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CarDB>());
+            InsertData();
+            QuestionData();
 
+            Console.ReadLine();
+        }
 
-            Console.ReadKey();
+        private static void InsertData()
+        {
+            var cars = ReadFiles("paliwo.csv");
+            var db = new CarDB();
+
+            if(!db.Cars.Any())
+            {
+                foreach (var car in cars)
+                {
+                    db.Cars.Add(car);
+                }
+                db.SaveChanges();
+            }
+        }
+
+        private static void QuestionData()
+        {
+            var db = new CarDB();
+            var question = from car in db.Cars
+                           orderby car.BurningInGeneral descending, car.Manufacturer ascending
+                           select car;
+
+            foreach (var car in question.Take(10))
+            {
+                Console.WriteLine("{0,-55} {1,-10}", $"{car.Manufacturer} {car.Model}", car.BurningInGeneral);
+            }
+                           
         }
 
         private static void AskXML()
